@@ -1,2 +1,29 @@
 <h1>Grandmas#edit</h1>
-<p>Find me in app/views/grandmas/edit.html.erb</p>
+<%= form_for(@grandma) do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :age %>
+    <%= f.text_field :age, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :location %>
+    <%= f.text_field :location, class: 'form-control' %>
+  </div>
+
+    <div class="form-group">
+    <%= f.label :avatar %>
+    <%= f.text_field :avatar, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
