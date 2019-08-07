@@ -13,6 +13,7 @@ class Booking < ApplicationRecord
   def end_date_valid?
     if (end_date && end_date < start_date)
       errors.add(:end_date, "Can't be before the start date")
+    end
   end
 
 # && (:start_date < :end_date)
