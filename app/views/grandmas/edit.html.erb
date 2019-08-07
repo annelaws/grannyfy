@@ -7,9 +7,8 @@
     <%= f.input :age, class: 'form-control' %>
     <%= f.input :location, class: 'form-control' %>
     <%= f.input :skills, collection: Skill.all %>
-    <%= f.button :submit %>
     <%= f.input :avatar %>
-    <%= f.input :avatar_cache, as: :hidden, class: 'btn btn-outline-info' %>
+    <%= f.input :avatar_cache, as: :hidden %>
     <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

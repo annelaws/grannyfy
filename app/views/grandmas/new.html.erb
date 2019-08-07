@@ -7,7 +7,12 @@
     <%= f.input :age, class: 'form-control' %>
     <%= f.input :location, class: 'form-control' %>
     <%= f.input :skills, collection: Skill.all %>
-    <%= f.button :submit %>
+    <label class="btn btn-primary">
+      Add a file!
+      <span style="display:none">
+        <%= f.file_field :avatar, required: true, multiple: true, name: 'picture' %>
+      </span>
+    </label>
     <%= f.input :avatar %>
     <%= f.input :avatar_cache, as: :hidden, class: 'btn btn-outline-info' %>
     <%= f.submit class: 'btn btn-primary' %>
