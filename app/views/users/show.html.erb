@@ -3,7 +3,11 @@
     <h1>Hello, <%= @user.first_name %></h1>
     <div class="card-container">
       <div class="card-profile">
-        <img class="avatar-large" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% if current_user.avatar.blank? %>
+        <img class="avatar-large" src="https://hsc.unm.edu/community/assets/img/faces/no-image.png" />
+          <% else %>
+        <img class="avatar-large" src="<%= cl_image_tag current_user.avatar%>" />
+        <% end %>
         <div class="card-profile-infos">
           <div class="row">
             <h2><%= @user.first_name %> <%= @user.last_name %></h2>
