@@ -2,11 +2,16 @@ class GrandmasController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @grandmas = policy_scope(Grandma)
+    @grandmas = Grandma.geocoded
   end
 
   def show
     @grandma = Grandma.find(params[:id])
+    @marker = [{
+        lat: @grandma.latitude,
+        lng: @grandma.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { grandma: @grandma })
+      }]
     authorize @grandma
     @booking = Booking.new
   end
