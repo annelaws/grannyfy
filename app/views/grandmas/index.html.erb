@@ -1,6 +1,18 @@
-<h1>Grandmas#index</h1>
+<h1>Grandmas</h1>
 <p>Find me in app/views/grandmas/index.html.erb</p>
 <% @grandmas.each do |grandma| %>
 <%= link_to grandma,grandma_path(grandma) %>
 <%= link_to "Delete Grandma",grandma_path(grandma), method: :delete %>
 <% end %>
+
+<div class="card-grandmother">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-trip-infos">
+    <div>
+      <h2>#{first-name} #{last-name}</h2>
+      <p>Short description here!</p>
+    </div>
+    <h2 class="card-trip-pricing">£99.99</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 72px);
+  padding: 10vh;
+}
+
+.banner h1 {
+  margin: 0px;
+  margin-bottom: 20px;
+  color: #182952;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: #182952;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.btn-flat {
+  background-color: #2b3595;
+  color: white;
+}
+
+.btn-flat:hover {
+  background-color: #2b3595;
+  color: black;
+}
