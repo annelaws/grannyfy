@@ -1,2 +1,11 @@
 <h1>Bookings#show</h1>
 <p>Find me in app/views/bookings/show.html.erb</p>
+<p>Status : <%= @status %></p>
+<p> Your grandma is :</p>
+<p><%= @booking.grandma.first_name%></p>
+<p><%=  @booking.grandma.last_name  %></p>
+<img class="avatar-large" src="<%= cl_image_path @booking.grandma.avatar%>" />
+<p> Your booking starts on : <%= @booking.start_date %></p>
+<p> Your booking ends on :<%= @booking.end_date %></p>
+
+

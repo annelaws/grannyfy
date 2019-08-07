@@ -6,7 +6,7 @@
         <% if current_user.avatar.blank? %>
         <img class="avatar-large" src="https://hsc.unm.edu/community/assets/img/faces/no-image.png" />
           <% else %>
-        <img class="avatar-large" src="<%= cl_image_tag current_user.avatar%>" />
+        <img class="avatar-large" src="<%= cl_image_path current_user.avatar%>" />
         <% end %>
         <div class="card-profile-infos">
           <div class="row">
