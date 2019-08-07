@@ -5,6 +5,7 @@
 
       <div class="cards">
       <% @grandmas.each do |grandma| %>
+      <a href="<%="/grandmas/#{grandma.id}"%>">
       <div class="card-grandmother">
         <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= cl_image_path grandma.avatar, height: 300, width: 400 %>')"></div>
@@ -16,9 +17,13 @@
           </div>
         </div>
       </div>
+      </a>
       <%#= link_to grandma,grandma_path(grandma) %>
       <%#= link_to "Delete Grandma",grandma_path(grandma), method: :delete %>
       <% end %>
     </div>
   </div>
 </div>
+
+
+
