@@ -1,4 +1,4 @@
-<div class="profile banner">
+<div class="profile-banner">
   <div class="container">
     <h1>Hello, <%= @user.first_name %></h1>
     <div class="card-container">
@@ -27,7 +27,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="profile-container">
   <h2>Your Grandmas</h2>
   <% @grandmas.each do |grandma| %>
   <%= grandma %>
@@ -37,13 +37,13 @@
   </button>
 </div>
 <hr>
-<div class="container">
+<div class="profile-container">
     <h2>Your Bookings</h2>
-  <% @grandmas.each do |grandma| %>
-  <%= grandma %>
+  <% @bookings.each do |booking| %>
+  <%=booking %>
   <% end %>
   <button>
-    <%= link_to "Add a grandma", new_grandma_path %>
+    <%= link_to "Make a new booking", grandmas_path %>
   </button>
 </div>
 
