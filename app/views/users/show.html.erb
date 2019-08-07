@@ -1,0 +1,49 @@
+<div class="profile banner">
+  <div class="container">
+    <h1>Hello, <%= @user.first_name %></h1>
+    <div class="card-container">
+      <div class="card-profile">
+        <% if current_user.avatar.blank? %>
+        <img class="avatar-large" src="https://hsc.unm.edu/community/assets/img/faces/no-image.png" />
+          <% else %>
+        <img class="avatar-large" src="<%= cl_image_tag current_user.avatar%>" />
+        <% end %>
+        <div class="card-profile-infos">
+          <div class="row">
+            <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5><%= @user.age %></h5>
+              <p><i>Age</i></p>
+            </div>
+            <div class="col">
+              <h5><%= @user.location %></h5>
+              <p><i>Location</i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h2>Your Grandmas</h2>
+  <% @grandmas.each do |grandma| %>
+  <%= grandma %>
+  <% end %>
+  <button>
+    <%= link_to "Add a grandma", new_grandma_path %>
+  </button>
+</div>
+<hr>
+<div class="container">
+    <h2>Your Bookings</h2>
+  <% @grandmas.each do |grandma| %>
+  <%= grandma %>
+  <% end %>
+  <button>
+    <%= link_to "Add a grandma", new_grandma_path %>
+  </button>
+</div>
+
