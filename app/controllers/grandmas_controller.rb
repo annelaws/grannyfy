@@ -2,7 +2,7 @@ class GrandmasController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @grandmas = Grandma.geocoded
+    @grandmas = policy_scope(Grandma)
   end
 
   def show

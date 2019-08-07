@@ -4,6 +4,10 @@ class GrandmaPolicy < ApplicationPolicy
     return true
   end
 
+  def new?
+    create?
+  end
+
   def create?
     return true
   end
@@ -18,7 +22,7 @@ class GrandmaPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.geocoded
     end
   end
 end
