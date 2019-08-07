@@ -13,6 +13,7 @@ class GrandmasController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { grandma: @grandma })
       }]
     authorize @grandma
+    @booking = Booking.new
   end
 
   def new

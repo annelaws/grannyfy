@@ -1,18 +1,24 @@
-<h1>Grandmas</h1>
-<p>Find me in app/views/grandmas/index.html.erb</p>
-<% @grandmas.each do |grandma| %>
-<%= link_to grandma,grandma_path(grandma) %>
-<%= link_to "Delete Grandma",grandma_path(grandma), method: :delete %>
-<% end %>
+<div class="wrapper">
+  <div class="container">
+      <h1 class="mb-4" style="color:black">Grandmothers in your Area</h1>
 
-<div class="card-grandmother">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2>#{first-name} #{last-name}</h2>
-      <p>Short description here!</p>
+
+      <div class="cards">
+      <% @grandmas.each do |grandma| %>
+      <div class="card-grandmother">
+        <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path grandma.avatar, height: 300, width: 400 %>')"></div>
+        <%#= cl_image_tag grandma.avatar, alt: grandma.id, class: 'bg-gm' %>
+        <div class="card-grandmother-infos">
+          <div>
+            <h2><%= grandma.first_name %> <%= grandma.last_name %> <%= grandma.age %></h2>
+            <p> Description</p>
+          </div>
+        </div>
+      </div>
+      <%#= link_to grandma,grandma_path(grandma) %>
+      <%#= link_to "Delete Grandma",grandma_path(grandma), method: :delete %>
+      <% end %>
     </div>
-    <h2 class="card-trip-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" />
   </div>
 </div>
