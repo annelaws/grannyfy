@@ -1,22 +1,30 @@
-<h1>Create a new Grandma</h1>
+<div class="container">
 
-<%= simple_form_for(@grandma) do |f| %>
+  <h2>Add a new grandma to the community</h2>
+
+  <%= simple_form_for(@grandma) do |f| %>
   <div class="container">
-    <%= f.input :first_name, class: 'form-control' %>
-    <%= f.input :last_name, class: 'form-control' %>
-    <%= f.input :age, class: 'form-control' %>
+    <p>STEP 1 : Who is the grandma you would like to add?</p>
+    <div class ="d-flex justify-content-between">
+      <%= f.input :first_name, class: 'form-control' %>
+      <%= f.input :last_name, class: 'form-control' %>
+      <%= f.input :age, class: 'form-control' %>
+    </div>
     <%= f.input :location, class: 'form-control' %>
-    <%= f.input :skills, collection: Skill.all %>
-    <label class="btn btn-primary">
-      Add a file!
-      <span style="display:none">
-        <%= f.file_field :avatar, required: true, multiple: true, name: 'picture' %>
-      </span>
-    </label>
-    <%= f.input :avatar %>
-    <%= f.input :avatar_cache, as: :hidden, class: 'btn btn-outline-info' %>
-    <%= f.submit class: 'btn btn-primary' %>
+    <p>STEP 2 : What are her extraordinary talents?</p>
+     <%= f.association :skills, as: :check_boxes %>
+
+    <p>STEP 3 : Add a photo to complete her profile</p>
+      <%= f.input :avatar  %>
+      <%= f.input :avatar_cache, as: :hidden %>
+      <%= f.submit class: 'btn-grad' %>
+
+
   </div>
 <% end %>
+
+</div>
+
+
 
 

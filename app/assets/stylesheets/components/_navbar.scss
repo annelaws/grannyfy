@@ -3,6 +3,7 @@
   background: white;
   h1 {
   color:$violet;
+  font-size: 32px;
   }
 }
 
@@ -12,4 +13,8 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.active {
+  color:$pink;
 }

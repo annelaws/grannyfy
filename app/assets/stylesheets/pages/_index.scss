@@ -5,13 +5,39 @@
 html, body {
   height: 100%;
   margin: 0;
+  background-color: $light-gray;
 }
 .container {
   padding: 20px;
-  min-height: 100%;
+  min-height: calc(100vh - 200px);
   margin: 0 auto -50px;
+  h2 {
+    font-size: 24px;
+    color: $light-violet;
+  }
+}
+
+.login_container {
+  width:400px;
+  margin: 16px auto;
+  border: 1px solid $violet;
+  border-radius: 4px;
+  padding: 16px;
+  background-color: white;
+  h2 {
+    font-family:'Quicksand', sans-serif;
+    font-size: 24px;
+    font-weight:300;
+    color: $violet;
+  }
 }
 
 .wrapper {
   height: calc(100vh - 100px - 72px);
 }
+
+.centered {
+  text-align:center;
+}
+
+
