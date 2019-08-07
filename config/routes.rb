@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :grandmas do
     resources :bookings, only: [:show, :new, :create]
   end
+  get '/profile', to: 'users#show'
 end
 
