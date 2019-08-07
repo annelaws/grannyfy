@@ -3,5 +3,6 @@ class UsersController < ApplicationController
     @user = current_user
     authorize @user
     @grandmas = @user.grandmas
+    @bookings = @user.bookings
   end
 end
