@@ -1,33 +1,17 @@
 <h1>Create a new Grandma</h1>
 
 <%= simple_form_for(@grandma) do |f| %>
-  <div class="form-group">
-    <%#= f.label :first_name %>
+  <div class="container">
     <%= f.input :first_name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%#= f.label :last_name %>
     <%= f.input :last_name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%#= f.label :age %>
     <%= f.input :age, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%#= f.label :location %>
     <%= f.input :location, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%#= f.label :avatar %>
+    <%= f.input :skills, collection: Skill.all %>
+    <%= f.button :submit %>
     <%= f.input :avatar %>
-    <%= f.input :avatar_cache, as: :hidden %>
+    <%= f.input :avatar_cache, as: :hidden, class: 'btn btn-outline-info' %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
-
-  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 
 
