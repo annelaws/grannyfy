@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
 
   get '/profile', to: 'users#show'
-  get '/profile/bookings/:id', to: 'bookings#show', as: :booking_show
+
+
+  get '/profile/bookings/:id', to: 'bookings#show', as: :booking_show do
+    resources :reviews, only: [:new, :create]
+  end
 
 end
 
