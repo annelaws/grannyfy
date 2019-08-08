@@ -8,4 +8,22 @@
 <p> Your booking starts on : <%= @booking.start_date %></p>
 <p> Your booking ends on :<%= @booking.end_date %></p>
 
+<div class="container">
+
+  <% if @status == "passed" %>
+    <%= simple_form_for([@booking, @review]) do |f| %>
+      <div class="form-group">
+      <%= f.input :content, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+      <%= f.input :score, class: 'form-control' %>
+      </div>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+
+</div>
+
+
+
 

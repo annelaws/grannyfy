@@ -1,0 +1,53 @@
+// gradient button
+.btn-grad {
+  font-size: 16px;
+  color: white;
+  min-width: 200px;
+  background-image: linear-gradient(to right, #DA22FF 0%, $light-violet 100%);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  &:hover {
+    color: white;
+    font-weight: 500;
+    background-image: none;
+    background-color: $light-violet;
+  }
+}
+
+.btn-grad-full-width {
+  font-size: 16px;
+  color: white;
+  width: 100%;
+  background-image: linear-gradient(to right, #DA22FF 0%, $light-violet 100%);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  &:hover {
+    color: white;
+    font-weight: 500;
+    background-image: none;
+    background-color: $light-violet;
+  }
+}
+
+.btn-full-width {
+  font-size: 16px;
+  color: $violet;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid $violet;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  &:hover {
+    // background-color: $light-violet
+    border: 2px solid $violet;
+    font-weight: 500;
+  }
+}
+
+
+
