@@ -49,5 +49,20 @@
   }
 }
 
+.btn-grandma-edit {
+  background-color: $light-violet;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  padding: 8px 12px;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.btn-grandma-edit:hover {
+  background-color: $violet;
+}
+
+
 
 
