@@ -21,6 +21,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'geocoder'
 gem 'pg_search'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
