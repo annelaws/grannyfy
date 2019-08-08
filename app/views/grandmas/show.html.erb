@@ -23,7 +23,7 @@
         <p>Age: <%= @grandma.age %></p>
         <p>Skills:</p>
         <% @grandma.skills.each do |skill| %>
-          <p><%= skill %></p>
+          <p><%= skill.name %></p>
         <% end %>
       </div>
     </div>

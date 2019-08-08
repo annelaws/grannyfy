@@ -41,6 +41,7 @@ class GrandmasController < ApplicationController
     @grandma.user = current_user
     if @grandma.save
       ids = params[:grandma][:skill_ids][1..-1].map(&:to_i)
+      byebug
       @grandma.set_grandma_skills(ids, @grandma)
       redirect_to grandmas_path
     else
