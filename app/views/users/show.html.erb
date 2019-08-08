@@ -29,7 +29,7 @@
 </div>
 <div class="profile-container">
   <h2 style="color: #182952">Your Grandmas</h2>
-  <div class="cards">
+  <div class="cards-profile">
     <% @grandmas.each do |grandma| %>
     <div class="card-grandmother">
       <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -52,9 +52,10 @@
     <%= link_to "Add a grandma", new_grandma_path, class: "btn-grad" %>
 </div>
 <hr>
+<% if @upcoming_bookings.present?%>
 <div class="profile-container">
   <h2 style="color: #182952">Your upcoming Bookings</h2>
-    <div class="cards">
+    <div class="cards-profile">
     <% @upcoming_bookings.each do |booking| %>
     <div class="card-grandmother">
       <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -69,11 +70,13 @@
     <% end %>
   </div>
 </div>
-
 <hr>
+<% end %>
+
+<% if @current_bookings.present?%>
 <div class="profile-container">
   <h2 style="color: #182952">Your current Bookings</h2>
-    <div class="cards">
+    <div class="cards-profile">
     <% @current_bookings.each do |booking| %>
     <div class="card-grandmother">
       <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -88,25 +91,31 @@
     <% end %>
   </div>
 </div>
-
 <hr>
+<% end %>
+
+<% if @passed_bookings.present?%>
 <div class="profile-container">
   <h2 style="color: #182952">Your passed Bookings</h2>
-    <div class="cards">
+    <div class="cards-profile">
     <% @passed_bookings.each do |booking| %>
     <div class="card-grandmother">
       <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
       url('<%= cl_image_path booking.grandma.avatar, height: 300, width: 400 %>')"></div>
-      <div class="card-grandmother-infos">
-        <div>
-          <h2><a href="<%="profile/bookings/#{booking.id}"%>"><%= booking.grandma.first_name %> <%= booking.grandma.last_name %> <%= booking.grandma.age %></a></h2>
-          <p><%= booking.start_date %> - <%= booking.end_date %></p>
+        <div class="card-grandmother-infos">
+          <div>
+            <h2><a href="<%="profile/bookings/#{booking.id}"%>"><%= booking.grandma.first_name %> <%= booking.grandma.last_name %> <%= booking.grandma.age %></a></h2>
+            <p><%= booking.start_date %> - <%= booking.end_date %></p>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
+    </div>
+     <%= link_to "Make a new booking", grandmas_path, class: "btn-grad" %>
+</div>
   </div>
+<% end %>
 
-      <%= link_to "Make a new booking", grandmas_path, class: "btn-grad" %>
+
 </div>
 
