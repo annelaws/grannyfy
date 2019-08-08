@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
     # params is a hash
     @booking = Booking.find(params[:id])
     authorize @booking
-    booking_status(@booking)
+    @status = booking_status(@booking)
     @review = Review.new
   end
 

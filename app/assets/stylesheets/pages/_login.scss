@@ -1,0 +1,14 @@
+.login_container {
+  width:400px;
+  margin: 16px auto;
+  border: 1px solid $violet;
+  border-radius: 4px;
+  padding: 16px;
+  background-color: white;
+  h2 {
+    font-family:'Quicksand', sans-serif;
+    font-size: 24px;
+    font-weight:300;
+    color: $violet;
+  }
+}
