@@ -3,15 +3,26 @@ class GrandmasController < ApplicationController
 
   def index
     @grandmas = policy_scope(Grandma)
+    @grandmas = Grandma.geocoded
+
+    @markers = @grandmas.map do |grandma|
+      {
+        lat: grandma.latitude,
+        lng: grandma.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { grandma: grandma }),
+        image_url: helpers.asset_url('https://vignette.wikia.nocookie.net/courage/images/d/d9/Muriel_Bagge.png/revision/latest?cb=20181025053335')
+      }
+    end
   end
 
   def show
     @grandma = Grandma.find(params[:id])
     @marker = [{
-        lat: @grandma.latitude,
-        lng: @grandma.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { grandma: @grandma })
-      }]
+      lat: @grandma.latitude,
+      lng: @grandma.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { grandma: @grandma }),
+      image_url: helpers.asset_url('https://vignette.wikia.nocookie.net/courage/images/d/d9/Muriel_Bagge.png/revision/latest?cb=20181025053335')
+    }]
     authorize @grandma
     @booking = Booking.new
   end
