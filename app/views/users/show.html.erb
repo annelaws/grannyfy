@@ -29,10 +29,27 @@
 </div>
 <div class="container">
   <div class="profile-container">
-  <h2>Your Grandmas</h2>
-  <% @grandmas.each do |grandma| %>
-  <%= grandma %>
-  <% end %>
+  <h2 style="color: #182952">Your Grandmas</h2>
+  <div class="cards">
+      <% @grandmas.each do |grandma| %>
+      <a href="<%="/grandmas/#{grandma.id}"%>">
+      <div class="card-grandmother">
+        <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path grandma.avatar, height: 300, width: 400 %>')"></div>
+        <div class="card-grandmother-infos">
+          <div>
+            <h2><%= grandma.first_name %> <%= grandma.last_name %> <%= grandma.age %></h2>
+            <p> Description</p>
+           </div>
+           <div class="grandma-edit">
+              <button class="btn-grandma-edit"><i class="fa fa-pen-fancy"></i></button>
+              <button class="btn-grandma-edit"><i class="fa fa-user-times"></i></button>
+          </div>
+        </div>
+      </div>
+      </a>
+      <% end %>
+    </div>
   <!-- <button> -->
     <%= link_to "Add a grandma", new_grandma_path, class: "btn-grad" %>
   <!-- </button> -->
