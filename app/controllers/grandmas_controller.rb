@@ -62,7 +62,7 @@ class GrandmasController < ApplicationController
     @grandma = Grandma.find(params[:id])
     authorize @grandma
     @grandma.delete
-    redirect_to grandmas_path
+    redirect_to profile_path
   end
 
   def grandma_params
