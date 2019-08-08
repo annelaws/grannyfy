@@ -18,4 +18,19 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
+  def booking_status(current_booking)
+    start_d = current_booking.start_date
+    end_d = current_booking.end_date
+    today = Date.today
+
+    if start_d > today
+      return @status = "upcoming"
+    elsif end_d < today
+      return @status = "passed"
+    else
+      return @status = "ongoing"
+    end
+  end
+
 end

@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     booking_status(@booking)
-    @Review.new
+    @review = Review.new
   end
 
   def new
@@ -32,17 +32,4 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:grandma, :user, :start_date, :end_date)
   end
 
-  def booking_status(current_booking)
-    start_d = current_booking.start_date
-    end_d = current_booking.end_date
-    today = Date.today
-
-    if start_d > today
-      return @status = "upcoming"
-    elsif end_d < today
-      return @status = "passed"
-    else
-      return @status = "ongoing"
-    end
-  end
 end

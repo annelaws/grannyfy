@@ -6,15 +6,26 @@ class GrandmasController < ApplicationController
     if params[:query].present?
       @grandmas = Grandma.search_by_first_name_and_last_name(params[:query])
     end
+    @grandmas = Grandma.geocoded
+
+    @markers = @grandmas.map do |grandma|
+      {
+        lat: grandma.latitude,
+        lng: grandma.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { grandma: grandma }),
+        image_url: helpers.asset_url('https://vignette.wikia.nocookie.net/courage/images/d/d9/Muriel_Bagge.png/revision/latest?cb=20181025053335')
+      }
+    end
   end
 
   def show
     @grandma = Grandma.find(params[:id])
     @marker = [{
-        lat: @grandma.latitude,
-        lng: @grandma.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { grandma: @grandma })
-      }]
+      lat: @grandma.latitude,
+      lng: @grandma.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { grandma: @grandma }),
+      image_url: helpers.asset_url('https://vignette.wikia.nocookie.net/courage/images/d/d9/Muriel_Bagge.png/revision/latest?cb=20181025053335')
+    }]
     authorize @grandma
     @booking = Booking.new
   end
@@ -56,7 +67,7 @@ class GrandmasController < ApplicationController
     @grandma = Grandma.find(params[:id])
     authorize @grandma
     @grandma.delete
-    redirect_to grandmas_path
+    redirect_to profile_path
   end
 
   def grandma_params
