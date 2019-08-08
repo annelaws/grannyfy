@@ -5,10 +5,13 @@ class GrandmasController < ApplicationController
     @grandmas = policy_scope(Grandma)
     if params[:query].present?
       @grandmas = Grandma.search_by_first_name_and_last_name(params[:query])
+    else
+      @grandmas
     end
-    @grandmas = Grandma.geocoded
 
-    @markers = @grandmas.map do |grandma|
+    @geocoded_grandmas = @grandmas.geocoded
+
+    @markers = @geocoded_grandmas.map do |grandma|
       {
         lat: grandma.latitude,
         lng: grandma.longitude,
