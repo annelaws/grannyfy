@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :grandma
-  has_one :review
   belongs_to :user
+  has_one :review, dependent: :destroy
   validates :start_date, :end_date, presence: true
   # validate :start_date_valid?
   # validate :end_date_valid?
