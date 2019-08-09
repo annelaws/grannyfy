@@ -1,1 +1,15 @@
+.container-profile-banner {
+  padding: 20px;
+  min-height: calc(100vh - 200px);
+  margin: 0 32px -50px;
+}
 
+.profile-container {
+
+  width: 95%;
+  margin: 16px auto;
+  h2 {
+    font-size: 32px !important;
+    color: $white !important ;
+  }
+}
