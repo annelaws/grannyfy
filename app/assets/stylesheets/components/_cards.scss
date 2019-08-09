@@ -76,7 +76,10 @@
 }
 
 .review-card {
-  padding: 8px;
+  padding: 12px;
   background-color: white;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 8px;
 }
