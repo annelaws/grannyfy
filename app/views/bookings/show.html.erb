@@ -1,12 +1,15 @@
 <div class="container">
     <h1>Your Booking details</h1>
-<div class="booking-grid">
+<div class="booking-grid" style="text-align: center">
   <div class="booking-details">
    <h2><%= "#{@booking.grandma.first_name} #{@booking.grandma.last_name}" %></h2>
     <br>
       <img class="avatar-large" src="<%= cl_image_path @booking.grandma.avatar%>" />
     <br>
-    <p class="booking-status"><%= "Booking status :  #{@status}" %></p>
+    <p class="booking-status">
+    Booking status: </br>
+      <strong>
+      <%= @status%></strong></p>
     <br>
     <div class=" booking-date d-flex justify-content-between">
        <div >
@@ -27,8 +30,13 @@
   <div class="booking-details">
     <h2>Your review</h2>
     <% if @booking.review.present? %>
-    <p>Comment:</p><%= "#{@booking.review.content}" %>
-    <p>Rating:</p><%= "#{@booking.review.score}" %>
+    <p><%= "#{@booking.review.content}" %></p>
+    <h2>Your rating:</h2>
+    <p>
+      <%@booking.review.score.times do %>
+      <i class="fas fa-cookie-bite" style="color: #7045af;"></i>
+        <% end %>
+      </p>
     <% end %>
     <% if @status == "passed" && @booking.review.nil? %>
       <%= simple_form_for([@booking, @review]) do |f| %>

@@ -12,7 +12,7 @@ class Grandma < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
   include PgSearch
     pg_search_scope :search_by_first_name_and_last_name,
-    against: [ :first_name, :last_name ],
+    against: [ :first_name, :last_name, :location ],
     associated_against: {
       skills: [ :name ],
 
