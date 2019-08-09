@@ -13,70 +13,13 @@
       <legend class="col-form-label pt-0">Skills</legend>
       <input type="hidden" name="grandma[skill_ids][]" value="">
       <div class="skill-choices">
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="1" name="grandma[skill_ids][]" id="grandma_skill_ids_1">
-          <label class="collection_check_boxes" for="grandma_skill_ids_1">cooking</label>
+        <% Skill.all.each do |skill| %>
+        <div class="form-check" data-id="<%= skill.id %>">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="<%= skill.id %>" name="grandma[skill_ids][]" id="grandma_skill_ids_<%= skill.id %>">
+          <label class="collection_check_boxes" for="grandma_skill_ids_<%= skill.id %>"><%= skill.name %></label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="2" name="grandma[skill_ids][]" id="grandma_skill_ids_2">
-          <label class="collection_check_boxes" for="grandma_skill_ids_2">baking</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="3" name="grandma[skill_ids][]" id="grandma_skill_ids_3">
-          <label class="collection_check_boxes" for="grandma_skill_ids_3">reading</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="4" name="grandma[skill_ids][]" id="grandma_skill_ids_4">
-          <label class="collection_check_boxes" for="grandma_skill_ids_4">knitting</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="5" name="grandma[skill_ids][]" id="grandma_skill_ids_5">
-          <label class="collection_check_boxes" for="grandma_skill_ids_5">story-telling</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="6" name="grandma[skill_ids][]" id="grandma_skill_ids_6">
-          <label class="collection_check_boxes" for="grandma_skill_ids_6">child-care</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="7" name="grandma[skill_ids][]" id="grandma_skill_ids_7">
-          <label class="collection_check_boxes" for="grandma_skill_ids_7">looking for glasses</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="8" name="grandma[skill_ids][]" id="grandma_skill_ids_8">
-          <label class="collection_check_boxes" for="grandma_skill_ids_8">motivating</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="9" name="grandma[skill_ids][]" id="grandma_skill_ids_9">
-          <label class="collection_check_boxes" for="grandma_skill_ids_9">wise commenter</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="10" name="grandma[skill_ids][]" id="grandma_skill_ids_10">
-          <label class="collection_check_boxes" for="grandma_skill_ids_10">telling people off</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="11" name="grandma[skill_ids][]" id="grandma_skill_ids_11">
-          <label class="collection_check_boxes" for="grandma_skill_ids_11">gardening</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="12" name="grandma[skill_ids][]" id="grandma_skill_ids_12">
-          <label class="collection_check_boxes" for="grandma_skill_ids_12">coffee time</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="13" name="grandma[skill_ids][]" id="grandma_skill_ids_13">
-          <label class="collection_check_boxes" for="grandma_skill_ids_13">playing cards</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="14" name="grandma[skill_ids][]" id="grandma_skill_ids_14">
-          <label class="collection_check_boxes" for="grandma_skill_ids_14">wake up</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="15" name="grandma[skill_ids][]" id="grandma_skill_ids_15">
-          <label class="collection_check_boxes" for="grandma_skill_ids_15">history lesson</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="16" name="grandma[skill_ids][]" id="grandma_skill_ids_16">
-          <label class="collection_check_boxes" for="grandma_skill_ids_16">sewing</label>
-        </div>
+
+        <% end %>
       </div>
     </fieldset>
 
@@ -88,3 +31,20 @@
 
   </div>
   <% end %>
+
+<script>
+  const boxes = document.querySelectorAll(".form-check")
+  boxes.forEach((box) =>{
+    box.addEventListener("click", (e)=>{
+      console.log(e.currentTarget.dataset.id)
+      const checkbox = document.querySelector(`#grandma_skill_ids_${e.currentTarget.dataset.id}`)
+      if (checkbox.checked) {
+        checkbox.checked = false
+      } else {
+        checkbox.checked = true
+      }
+      console.log(checkbox.value)
+
+    })
+  })
+</script>
