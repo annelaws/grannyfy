@@ -153,9 +153,9 @@ end
 
 50.times do
  review = Review.new(
-    content: Faker::Superhero.power,
+    content: Faker::GreekPhilosophers.quote,
     score: rand(1..5),
-    booking_id: (Booking.all.sample).id
+    booking_id: Booking.all.sample.id
   )
 
   review.save!
