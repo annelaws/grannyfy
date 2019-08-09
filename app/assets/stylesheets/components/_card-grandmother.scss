@@ -4,7 +4,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 10px;
   // width: 100%;
-  min-width: 350px;
+  min-width: 300px;
 }
 
 .card-grandmother h2 {
@@ -98,7 +98,7 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards-profile {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 

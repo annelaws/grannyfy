@@ -1,56 +1,62 @@
 <div class="wrapper">
-  <div class="my-5">
-   <%= form_tag grandmas_path, method: :get do %>
-    <div class=" d-flex justify-content-center">
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control", id:"search",
-      placeholder: "Search by name, city or skills"
-      %>
-      <%= submit_tag "Search", class: "mb-0 btn-grad" %>
+  <div class="mt-5">
+    <div class="container" style="min-height: 60px !important;">
+     <%= form_tag grandmas_path, method: :get do %>
+        <div class="row justify-content-center">
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <%= text_field_tag :query,
+            params[:query],
+            class: "form-control mb-3", id:"search",
+            placeholder: "Search by name, city or skills",
+            style: 'width: 100%;'
+            %>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <%= submit_tag "Search", class: "mb-0 btn-grad mx-auto" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
   </div>
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8 py-4">
+      <div class=" col-sm-12 col-md-8 py-4">
         <div class="cards-profile">
           <% @grandmas.each do |grandma| %>
-           <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-6">
             <!-- <a href="<%#="/grandmas/#{grandma.id}"%>"> -->
-            <div class=" card-grandmother">
-              <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-              url('<%= cl_image_path grandma.avatar, height: 300, width: 400 %>')"></div>
+              <div class=" card-grandmother">
+                <div class="grandma-pic" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                url('<%= cl_image_path grandma.avatar, height: 300, width: 400 %>')"></div>
                 <div class="card-grandmother-infos">
                   <div>
                     <h2><a href="<%="/grandmas/#{grandma.id}"%>"><%= grandma.first_name %> <%= grandma.last_name %> <%= grandma.age %></a></h2>
                     <p>
-                    <% grandma.skills.each do |skill| %>
-                    <span><%= skill.name %> | </span>
-                    <% end %>
+                      <% grandma.skills.each do |skill| %>
+                      <span><%= skill.name %> | </span>
+                      <% end %>
                     </p>
                   </div>
-                 </div>
                 </div>
               </div>
-             </a>
-            <% end  %>
-           </div>
-          </div>
+            </div>
+          </a>
+          <% end %>
+        </div>
+      </div>
 
-        <div class="col-md-4">
-          <div
-            id="map"
-            style="width: 100%;
-            height: 100vh;"
-            data-markers="<%= @markers.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
-         </div>
+      <div class="col-sm-0 col-md-4">
+        <div
+        id="map"
+        style="width: 100%;
+        height: 100vh;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
   </div>
+</div>
 </div>
 
 
