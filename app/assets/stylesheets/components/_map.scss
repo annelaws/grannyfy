@@ -9,6 +9,10 @@
   background: #ebfffb;
 }
 
+.mapboxgl-popup-content h2 {
+  color: #000000 !important;
+}
+
 #map {
   height: 100vh;
   position: sticky;
