@@ -1,16 +1,32 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
-<p>Status : <%= @status %></p>
-<p> Your grandma is :</p>
-<p><%= @booking.grandma.first_name%></p>
-<p><%=  @booking.grandma.last_name  %></p>
-<img class="avatar-large" src="<%= cl_image_path @booking.grandma.avatar%>" />
-<p> Your booking starts on : <%= @booking.start_date %></p>
-<p> Your booking ends on :<%= @booking.end_date %></p>
-
 <div class="container">
+    <h1>Your Booking details</h1>
+<div class="booking-details">
 
-  <% if @status == "passed" %>
+  <h2><%= "#{@booking.grandma.first_name} #{@booking.grandma.last_name}" %></h2>
+  <p class="booking-status"><%= "Booking status :  #{@status}" %></p>
+  <div class=" booking-date d-flex justify-content-between">
+     <div >
+      <p> START DATE: </p>
+      <%= "#{@booking.start_date}" %>
+    </div>
+    <div >
+      <p> END DATE: </p>
+      <%= "#{@booking.end_date}" %>
+    </div>
+  </div>
+
+  <img class="avatar-large" src="<%= cl_image_path @booking.grandma.avatar%>" />
+<!-- <p> Your booking starts on : <%= @booking.start_date %></p>
+<p> Your booking ends on :<%= @booking.end_date %></p> -->
+</div>
+
+<div class="booking-details">
+  <h2>Your review</h2>
+  <% if @booking.review.present? %>
+  <p>Comment:</p><%= "#{@booking.review.content}" %>
+  <p>Rating:</p><%= "#{@booking.review.score}" %>
+  <% end %>
+  <% if @status == "passed" && @booking.review.nil? %>
     <%= simple_form_for([@booking, @review]) do |f| %>
       <div class="form-group">
       <%= f.input :content, class: 'form-control' %>
@@ -21,6 +37,8 @@
       <%= f.submit class: 'btn btn-primary' %>
     <% end %>
   <% end %>
+</div>
+
 
 </div>
 

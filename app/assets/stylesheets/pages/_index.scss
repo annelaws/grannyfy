@@ -1,11 +1,24 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "profile";
+@import "login";
+@import "booking";
 
 html, body {
   height: 100%;
   margin: 0;
   background-color: $light-gray;
+  // background-color: $dark-blue;
+  h1 {
+    // color: $dark-blue;
+    color: white;
+    font-size: 32px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+  }
+  p {
+    color: #393e46;
+  }
 }
 .container {
   padding: 20px;
@@ -47,6 +60,7 @@ html, body {
     color: $violet;
   }
 }
+
 
 .wrapper {
   height: calc(100vh - 100px - 72px);

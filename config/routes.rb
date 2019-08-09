@@ -6,9 +6,13 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
+  # resources :bookings, only: [] do
+  #   resources :reviews, only: [:new, :create]
+  # end
+
   get '/profile', to: 'users#show'
   get '/profile/bookings/:id', to: 'bookings#show', as: :booking_show
   get '/profile/bookings/:id/reviews/new', to:'reviews#new', as: :new_review
-  post '/profile/bookings/:id/reviews', to: 'reviews#create', as: :reviews
+  post '/profile/bookings/:id/reviews', to: 'reviews#create', as: :booking_reviews
 end
 

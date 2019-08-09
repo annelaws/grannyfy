@@ -1,5 +1,6 @@
 class Booking < ApplicationRecord
   belongs_to :grandma
+  has_one :review
   belongs_to :user
   validates :start_date, :end_date, presence: true
   # validate :start_date_valid?
