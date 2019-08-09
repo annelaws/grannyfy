@@ -1,45 +1,50 @@
 <div class="container">
     <h1>Your Booking details</h1>
-<div class="booking-details">
+<div class="booking-grid">
+  <div class="booking-details">
+   <h2><%= "#{@booking.grandma.first_name} #{@booking.grandma.last_name}" %></h2>
+    <br>
+      <img class="avatar-large" src="<%= cl_image_path @booking.grandma.avatar%>" />
+    <br>
+    <p class="booking-status"><%= "Booking status :  #{@status}" %></p>
+    <br>
+    <div class=" booking-date d-flex justify-content-between">
+       <div >
+        <p> <strong>START DATE: </strong></p>
+        <%= "#{@booking.start_date}" %>
+      </div>
+      <div >
+        <p> <strong>END DATE: </strong></p>
+        <%= "#{@booking.end_date}" %>
+      </div>
+    </div>
 
-  <h2><%= "#{@booking.grandma.id} #{@booking.grandma.last_name}" %></h2>
-  <p class="booking-status"><%= "Booking status :  #{@status}" %></p>
-  <div class=" booking-date d-flex justify-content-between">
-     <div >
-      <p> START DATE: </p>
-      <%= "#{@booking.start_date}" %>
-    </div>
-    <div >
-      <p> END DATE: </p>
-      <%= "#{@booking.end_date}" %>
-    </div>
+
+  <!-- <p> Your booking starts on : <%= @booking.start_date %></p>
+  <p> Your booking ends on :<%= @booking.end_date %></p> -->
   </div>
 
-  <img class="avatar-large" src="<%= cl_image_path @booking.grandma.avatar%>" />
-<!-- <p> Your booking starts on : <%= @booking.start_date %></p>
-<p> Your booking ends on :<%= @booking.end_date %></p> -->
-</div>
-
-<div class="booking-details">
-  <h2>Your review</h2>
-  <% if @booking.review.present? %>
-  <p>Comment:</p><%= "#{@booking.review.content}" %>
-  <p>Rating:</p><%= "#{@booking.review.score}" %>
-  <% end %>
-  <% if @status == "passed" && @booking.review.nil? %>
-    <%= simple_form_for([@booking, @review]) do |f| %>
-      <div class="form-group">
-      <%= f.input :content, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-      <%= f.input :score, class: 'form-control' %>
-      </div>
-      <%= f.submit class: 'btn btn-primary' %>
+  <div class="booking-details">
+    <h2>Your review</h2>
+    <% if @booking.review.present? %>
+    <p>Comment:</p><%= "#{@booking.review.content}" %>
+    <p>Rating:</p><%= "#{@booking.review.score}" %>
     <% end %>
-  <% end %>
-</div>
+    <% if @status == "passed" && @booking.review.nil? %>
+      <%= simple_form_for([@booking, @review]) do |f| %>
+        <div class="form-group">
+        <%= f.input :content, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+        <%= f.input :score, class: 'form-control' %>
+        </div>
+        <%= f.submit class: 'btn-grad-full-width' %>
+      <% end %>
+    <% end %>
+  </div>
 
 
+  </div>
 </div>
 
 
