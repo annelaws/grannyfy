@@ -1,9 +1,9 @@
 class Grandma < ApplicationRecord
   mount_uploader :avatar, PhotoUploader
-  has_many :grandma_skills
+  has_many :grandma_skills, dependent: :destroy
   has_many :skills, through: :grandma_skills
-  has_many :bookings
-  has_many :reviews, through: :bookings
+  has_many :bookings, dependent: :destroy
+  has_many :reviews, through: :bookings, dependent: :destroy
   belongs_to :user
   validates :age, numericality: { only_integer: true }
   validates :first_name, :last_name, :age, :location, :avatar, presence: true
