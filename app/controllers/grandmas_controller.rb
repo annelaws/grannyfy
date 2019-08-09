@@ -69,7 +69,7 @@ class GrandmasController < ApplicationController
   def destroy
     @grandma = Grandma.find(params[:id])
     authorize @grandma
-    @grandma.destroy
+    @grandma.delete
     redirect_to profile_path
   end
 
