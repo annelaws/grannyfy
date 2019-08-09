@@ -1,14 +1,7 @@
-<h1>Edit your Grandma <%=@grandma.first_name%> <%=@grandma.last_name%></h1>
+<div class="container">
 
-<%= simple_form_for(@grandma) do |f| %>
-  <div class="container">
-    <%= f.input :first_name, class: 'form-control' %>
-    <%= f.input :last_name, class: 'form-control' %>
-    <%= f.input :age, class: 'form-control' %>
-    <%= f.input :location, class: 'form-control' %>
-    <%= f.input :skills, collection: Skill.all %>
-    <%= f.input :avatar %>
-    <%= f.input :avatar_cache, as: :hidden %>
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
-<% end %>
+  <h2>Edit information for <%= @grandma.first_name %> <%= @grandma.last_name %></h2>
+
+  <%= render "form" %>
+
+</div>

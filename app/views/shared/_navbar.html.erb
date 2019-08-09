@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="d-flex">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "eyeglasses.svg" %>
     <% end %>
     <h1>Grannyfy</h1>
@@ -15,10 +15,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "HOME", "/profile", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "MESSAGES", "#", class: "nav-link" %>
+          <%= link_to "BOOK YOUR GRANDMA", grandmas_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.avatar.blank? %>

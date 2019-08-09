@@ -1,1 +1,90 @@
-_form.html.erb
+<%= simple_form_for(@grandma) do |f| %>
+  <div class="container">
+    <p>STEP 1 : Who is the grandma you would like to add?</p>
+    <div class ="d-flex justify-content-between">
+      <%= f.input :first_name, class: 'form-control' %>
+      <%= f.input :last_name, class: 'form-control' %>
+      <%= f.input :age, class: 'form-control' %>
+    </div>
+    <%= f.input :location, class: 'form-control' %>
+    <p>STEP 2 : What are her extraordinary talents?</p>
+    <%#= f.association :skills, as: :check_boxes %>
+    <fieldset class="form-group check_boxes optional grandma_skills">
+      <legend class="col-form-label pt-0">Skills</legend>
+      <input type="hidden" name="grandma[skill_ids][]" value="">
+      <div class="skill-choices">
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="1" name="grandma[skill_ids][]" id="grandma_skill_ids_1">
+          <label class="collection_check_boxes" for="grandma_skill_ids_1">cooking</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="2" name="grandma[skill_ids][]" id="grandma_skill_ids_2">
+          <label class="collection_check_boxes" for="grandma_skill_ids_2">baking</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="3" name="grandma[skill_ids][]" id="grandma_skill_ids_3">
+          <label class="collection_check_boxes" for="grandma_skill_ids_3">reading</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="4" name="grandma[skill_ids][]" id="grandma_skill_ids_4">
+          <label class="collection_check_boxes" for="grandma_skill_ids_4">knitting</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="5" name="grandma[skill_ids][]" id="grandma_skill_ids_5">
+          <label class="collection_check_boxes" for="grandma_skill_ids_5">story-telling</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="6" name="grandma[skill_ids][]" id="grandma_skill_ids_6">
+          <label class="collection_check_boxes" for="grandma_skill_ids_6">child-care</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="7" name="grandma[skill_ids][]" id="grandma_skill_ids_7">
+          <label class="collection_check_boxes" for="grandma_skill_ids_7">looking for glasses</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="8" name="grandma[skill_ids][]" id="grandma_skill_ids_8">
+          <label class="collection_check_boxes" for="grandma_skill_ids_8">motivating</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="9" name="grandma[skill_ids][]" id="grandma_skill_ids_9">
+          <label class="collection_check_boxes" for="grandma_skill_ids_9">wise commenter</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="10" name="grandma[skill_ids][]" id="grandma_skill_ids_10">
+          <label class="collection_check_boxes" for="grandma_skill_ids_10">telling people off</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="11" name="grandma[skill_ids][]" id="grandma_skill_ids_11">
+          <label class="collection_check_boxes" for="grandma_skill_ids_11">gardening</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="12" name="grandma[skill_ids][]" id="grandma_skill_ids_12">
+          <label class="collection_check_boxes" for="grandma_skill_ids_12">coffee time</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="13" name="grandma[skill_ids][]" id="grandma_skill_ids_13">
+          <label class="collection_check_boxes" for="grandma_skill_ids_13">playing cards</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="14" name="grandma[skill_ids][]" id="grandma_skill_ids_14">
+          <label class="collection_check_boxes" for="grandma_skill_ids_14">wake up</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="15" name="grandma[skill_ids][]" id="grandma_skill_ids_15">
+          <label class="collection_check_boxes" for="grandma_skill_ids_15">history lesson</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input check_boxes optional hidden-checkbox" type="checkbox" value="16" name="grandma[skill_ids][]" id="grandma_skill_ids_16">
+          <label class="collection_check_boxes" for="grandma_skill_ids_16">sewing</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <p>STEP 3 : Add a photo to complete her profile</p>
+    <%= f.input :avatar  %>
+    <%= f.input :avatar_cache, as: :hidden %>
+    <%= f.submit class: 'btn-grad' %>
+
+
+  </div>
+  <% end %>
