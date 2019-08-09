@@ -12,6 +12,7 @@ require 'faker'
 puts 'Cleaning data base...'
 Review.destroy_all
 Booking.destroy_all
+GrandmaSkill.destroy_all
 Skill.destroy_all
 Grandma.destroy_all
 User.destroy_all
@@ -104,9 +105,10 @@ users_attributes.each do |user|
       first_name: Faker::Name.female_first_name,
       last_name: Faker::Name.last_name,
       age: rand(70..100),
-      location: Faker::Address.full_address,
-      remote_avatar_url: "https://www.irelandsown.ie/wp-content/uploads/2015/02/gran.jpg",
-      user: newuser
+      location: Faker::Address.city,
+      remote_avatar_url: "https://loremflickr.com/600/800/grandmother",
+      user: newuser,
+      skills: Skill.all.sample(rand(0..6))
       )
     grandma.save!
       # usercount = rand(User.count)

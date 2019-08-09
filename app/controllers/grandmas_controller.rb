@@ -3,9 +3,15 @@ class GrandmasController < ApplicationController
 
   def index
     @grandmas = policy_scope(Grandma)
-    @grandmas = Grandma.geocoded
+    if params[:query].present?
+      @grandmas = Grandma.search_by_first_name_and_last_name(params[:query])
+    else
+      @grandmas
+    end
 
-    @markers = @grandmas.map do |grandma|
+    @geocoded_grandmas = @grandmas.geocoded
+
+    @markers = @geocoded_grandmas.map do |grandma|
       {
         lat: grandma.latitude,
         lng: grandma.longitude,
@@ -37,6 +43,8 @@ class GrandmasController < ApplicationController
     authorize @grandma
     @grandma.user = current_user
     if @grandma.save
+      ids = params[:grandma][:skill_ids][1..-1].map(&:to_i)
+      @grandma.set_grandma_skills(ids, @grandma)
       redirect_to grandmas_path
     else
       render "new"

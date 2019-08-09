@@ -32,6 +32,10 @@
   color: black;
 }
 
+.cards-profile a {
+  color: black;
+}
+
 .card-grandmother .card-grandmother-infos {
   padding: 16px;
   display: flex;
@@ -47,10 +51,16 @@
 
 .cards {
   display: grid;
-  grid-template-columns: 260px 260px 260px 260px;
   grid-gap: 10px;
   margin: 8px auto;
   justify-items: center;
+
+}
+
+.cards-profile {
+  display: grid;
+  margin: 8px auto;
+  grid-gap: 20px;
 }
 
 .grandma-edit {
@@ -71,11 +81,17 @@
   .cards {
     grid-template-columns: 260px;
   }
+  .cards-profile {
+    grid-template-columns: 260px;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .cards {
+    grid-template-columns: 260px 260px;
+  }
+  .cards-profile {
     grid-template-columns: 260px 260px;
   }
 }
@@ -85,11 +101,17 @@
   .cards {
     grid-template-columns: 260px 260px 260px 260px;
   }
+  .cards-profile {
+    grid-template-columns: 260px 260px 260px;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
     grid-template-columns: 260px 260px 260px 260px;
+  }
+    .cards-profile {
+    grid-template-columns: 260px 260px 260px 260px 260px 260px;
   }
 }
