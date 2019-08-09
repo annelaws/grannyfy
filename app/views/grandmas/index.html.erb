@@ -37,7 +37,7 @@
               url('<%= cl_image_path grandma.avatar, height: 300, width: 400 %>')"></div>
                 <div class="card-grandmother-infos">
                   <div>
-                    <h2><%= grandma.first_name %> <%= grandma.last_name %> <%= grandma.age %></h2>
+                    <h2><a href="<%="/grandmas/#{grandma.id}"%>"><%= grandma.first_name %> <%= grandma.last_name %> <%= grandma.age %></a></h2>
                     <p>
                     <% grandma.skills.each do |skill| %>
                     <span><%= skill.name %> | </span>
