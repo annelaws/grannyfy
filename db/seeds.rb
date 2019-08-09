@@ -51,7 +51,7 @@ users_attributes = [
     remote_avatar_url: "https://cdn1.thr.com/sites/default/files/imagecache/scale_crop_768_433/2017/08/helen_sloan_-_hbo_photo_43_-_h_2017.jpg",
     password: "Test123",
   },
-    {
+  {
     first_name: "Daenerys" ,
     last_name: "Targaryen" ,
     age: 28 ,
@@ -60,7 +60,7 @@ users_attributes = [
     remote_avatar_url: "https://img.static-rmg.be/a/view/q75/w720/h480/1983872/daenerys-png.png",
     password: "Test123",
   },
-    {
+  {
     first_name: "Cersei",
     last_name: "Lannister",
     age: 41,
@@ -69,7 +69,7 @@ users_attributes = [
     remote_avatar_url: "https://statics.lesinrocks.com/content/thumbs/uploads/2017/10/width-715/capture-decran-2017-10-18-a-13-04-13.png",
     password: "Test123",
   },
-    {
+  {
     first_name: "Arya" ,
     last_name: "Stark" ,
     age: 17 ,
@@ -78,7 +78,7 @@ users_attributes = [
     remote_avatar_url: "https://img.huffingtonpost.com/asset/5cbda7c8240000b900068412.jpeg",
     password: "Test123",
   },
-    {
+  {
     first_name: "Sansa" ,
     last_name: "Stark" ,
     age: 21 ,
@@ -126,7 +126,7 @@ grandma_avatars = [img1, img2, img3, img3, img4, img5, img6, img7, img8, img9, i
 users_attributes.each do |user|
   puts "creating a user"
   newuser = User.create!(user)
-  rand(1..3).times do
+  rand(1..10).times do
     grandma = Grandma.new(
       first_name: Faker::Name.female_first_name,
       last_name: Faker::Name.last_name,
@@ -139,27 +139,30 @@ users_attributes.each do |user|
     grandma.save!
       # usercount = rand(User.count)
       # grandmacount = rand(Grandma.count)
+      rand(10..15).times do
+        booking = Booking.new(
+          user: User.last(2).first,
+          grandma: grandma,
+          start_date: rand_date(30..60),
+          end_date: rand_date(29)
+          )
+        booking.save!
 
-    booking = Booking.new(
-      user: User.last(2).first,
-      grandma: grandma,
-      start_date: rand_date(30..60),
-      end_date: rand_date(29)
-    )
-    booking.save!
+      end
+
+    end
 
   end
-end
 
-50.times do
- review = Review.new(
+  30.times do
+   review = Review.new(
     content: Faker::GreekPhilosophers.quote,
     score: rand(1..5),
     booking_id: Booking.all.sample.id
-  )
+    )
 
-  review.save!
-end
+   review.save!
+ end
 
 # hey laura, its eLi... remove your date in future validations to run the seed .... otherwise you cannot use past dates
 
