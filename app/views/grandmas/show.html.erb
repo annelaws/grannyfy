@@ -29,7 +29,10 @@
     </div>
   </div>
 
-
+  <% @grandma.reviews.each do |review| %>
+  <%= review.content %>
+  <%= review.score %>
+  <% end %>
 
 <%= simple_form_for([@grandma, @booking]) do |f| %>
   <div class="form-group">
