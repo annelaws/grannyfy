@@ -3,7 +3,6 @@
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 10px;
-  margin-bottom: 16px;
   width: 100%;
 }
 
@@ -18,7 +17,7 @@
 .card-grandmother h2 {
   font-size: 24px;
   font-weight: bold;
-  margin: 0;
+  // margin-bottom: 0;
   color: #182952 !important;
 }
 
@@ -41,6 +40,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  min-height: 155px;
 }
 
 .card-grandmother-infos .card-grandmother-user {
@@ -51,17 +51,61 @@
 
 .cards {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 16px;
   margin: 8px auto;
   justify-items: center;
 
 }
 
+// .cards-profile {
+//   display: grid;
+//   margin: 8px auto;
+//   grid-gap: 20px;
+// }
+
+
 .cards-profile {
   display: grid;
-  margin: 8px auto;
-  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin: 45px 0px;
 }
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-profile {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards-profile {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards-profile {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards-profile {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards-profile {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 
 .grandma-edit {
   display: flex;
@@ -69,49 +113,3 @@
   margin-top: 8px;
 }
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 260px;
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards {
-    grid-template-columns: 260px;
-  }
-  .cards-profile {
-    grid-template-columns: 260px;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: 260px 260px;
-  }
-  .cards-profile {
-    grid-template-columns: 260px 260px;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 260px 260px 260px 260px;
-  }
-  .cards-profile {
-    grid-template-columns: 260px 260px 260px;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards {
-    grid-template-columns: 260px 260px 260px 260px;
-  }
-    .cards-profile {
-    grid-template-columns: 260px 260px 260px 260px 260px 260px;
-  }
-}

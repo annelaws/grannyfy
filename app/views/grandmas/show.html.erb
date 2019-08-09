@@ -1,49 +1,99 @@
-<div class="container">
+<div class="profile-container">
   <div class="grandma-profile-title text-">
     <h1 class="text-center">Book your Grandma moment</h1>
   </div>
-  <div class="row">
-    <div class="col-6">
-      <div id="grandma-head-photo">
-        <%= cl_image_tag @grandma.avatar, g: :face, class: 'avatar-extra-large' %>
+</div>
+<div class="profile-container" style="margin: 16px auto">
+  <div class="row" >
+    <div class="col-sm-12 col-md-6">
+      <div class="card-container">
+        <div class="card-profile">
+          <% if current_user.avatar.blank? %>
+          <img class="avatar-large" src="https://hsc.unm.edu/community/assets/img/faces/no-image.png" />
+          <% else %>
+          <img class="avatar-large" src="<%= cl_image_path @grandma.avatar%>" />
+          <% end %>
+          <div class="card-profile-infos">
+            <div class="row">
+              <h2><%= @grandma.first_name %> <%= @grandma.last_name %></h2>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5><%= @grandma.age %></h5>
+                <p><i>Age</i></p>
+              </div>
+              <div class="col">
+                <h5><%= @grandma.location %></h5>
+                <p><i>Location</i></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-6">
-      <div
-        id="map"
-        style="width: 100%; height: 400px !important;
-        height: 38%;"
-        data-markers="<%= @marker.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
-    </div>
-    <div class="col-6">
-      <div class="grandma-name-age">
-        <p>Name: <%= @grandma.first_name %> <%= @grandma.last_name %></p>
-        <p>Age: <%= @grandma.age %></p>
-        <p>Skills:</p>
-        <% @grandma.skills.each do |skill| %>
-          <p><%= skill.name %></p>
-        <% end %>
+    <div class="col-sm-12 col-md-6" style="background-color: white; box-shadow: 0 0 4px rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
+      <%= simple_form_for([@grandma, @booking]) do |f| %>
+      <div class="form-group">
+        <%= f.input :start_date, html5: true, class: 'form-control' %>
       </div>
+      <div class="form-group">
+        <%= f.input :end_date, html5: true, class: 'form-control' %>
+      </div>
+      <%= f.submit class: 'btn btn-grad' %>
+      <% end %>
     </div>
   </div>
+</div>
+<hr>
 
-  <% @grandma.reviews.each do |review| %>
-  <%= review.content %>
-  <%= review.score %>
+<div class="profile-container">
+  <h2>What can <%= @grandma.first_name %> do for you?</h2>
+  <div class="cards" style="display: flex; justify-content: space-between;">
+  <%@grandma.skills.each do |skill| %>
+    <div style="margin: 16px 8px; background-color: white; padding: 12px 32px 6px 32px; font-size: 24px; border-radius: 8px; box-shadow: 0 0 4px rgba(0,0,0,0.2); ">
+      <p><%= skill.name %></p>
+    </div>
   <% end %>
-
-<%= simple_form_for([@grandma, @booking]) do |f| %>
-  <div class="form-group">
-    <%= f.input :start_date, html5: true, class: 'form-control' %>
   </div>
-
-  <div class="form-group">
-    <%= f.input :end_date, html5: true, class: 'form-control' %>
+</div>
+<hr>
+<div class="profile-container">
+  <h2>What are others saying about <%= @grandma.first_name %>?</h2>
+  <% if @grandma.reviews.present? %>
+  <% @grandma.reviews.each do |review| %>
+  <div class="review-card">
+  <img class="avatar-large" src="<%= cl_image_path review.booking.user.avatar%>" />
+  <div style="margin-left: 32px;">
+    <p>
+    <% review.score.times do %>
+      <i class="fas fa-cookie-bite" style="color: #7045af;"></i>
+    <% end %>
+    </p>
+    <p style="font-weight: bold">
+    <%= review.content %>
+    </p>
+    <p><i>
+    <%= review.booking.user.first_name %></br>
+    Booking date: <%= review.booking.start_date %>
+    </i></p>
   </div>
+  </div>
+  <% end %>
+  <% else %>
+    <div class="review-card">
+    <p>There are no reviews yet.</p>
+    </div>
+  <% end %>
+</div>
+<hr>
 
-
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
+<div class="profile-container">
+  <h2>In which area is <%= @grandma.first_name %> living?</h2>
+  <div
+  id="map"
+  style="width: 100%; height: 400px !important;
+  height: 38%;"
+  data-markers="<%= @marker.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 </div>
