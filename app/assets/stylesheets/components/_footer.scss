@@ -7,6 +7,12 @@
   padding: 0px 50px;
   color: #2d248a;
   font-family: 'Noto Sans', sans-serif;
+  // position: sticky;
+  width: 100%;
+  bottom: 0;
+}
+.content {
+  min-height: calc(100vh - 200px)
 }
 .footer-links {
   display: flex;
